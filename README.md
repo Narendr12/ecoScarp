@@ -1,73 +1,160 @@
-# Welcome to your Lovable project
+# ReclaimRoute - Scrap Pickup Management System
 
-## Project info
+A mobile-ready web application built with React and Capacitor for managing scrap pickup requests between customers and eco-warrior partners.
 
-**URL**: https://lovable.dev/projects/99904fca-87c9-44d0-9aab-f8dea8a0c066
+## 🚀 Features
 
-## How can I edit this code?
+### Customer App
+- **Authentication**: Phone number + OTP login (mock OTP: 123456)
+- **Dashboard**: Welcome screen with pickup scheduling and recent orders
+- **Schedule Pickup**: Date/time selection, address input, optional map link
+- **Order History**: View all pickup requests with real-time status updates
+- **Pickup Code**: Unique code displayed for partner verification
+- **Approval Interface**: Review and approve partner-submitted item details
 
-There are several ways of editing your application.
+### Partner App
+- **Authentication**: Phone number + OTP login (mock OTP: 123456)
+- **Dashboard**: View available and assigned pickup requests
+- **Pickup Management**: Accept requests and manage workflow
+- **Code Verification**: Enter customer pickup code to start process
+- **Item Entry**: Add scrap item details (name, quantity, price)
+- **Status Updates**: Progress requests through 5-stage lifecycle
 
-**Use Lovable**
+## 📱 Pickup Request Lifecycle
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/99904fca-87c9-44d0-9aab-f8dea8a0c066) and start prompting.
+1. **Pending** - Customer schedules pickup
+2. **Accepted** - Partner accepts the request
+3. **In-Process** - Partner enters pickup code at location
+4. **Pending Approval** - Partner submits item details for review
+5. **Completed** - Customer approves the pickup details
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend**: React 18 + TypeScript + Vite
+- **Mobile**: Capacitor (iOS & Android support)
+- **UI**: Tailwind CSS + shadcn/ui components
+- **State Management**: React Context API
+- **Navigation**: React Router DOM
+- **Storage**: LocalStorage for data persistence
+- **Icons**: Lucide React
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🏃‍♂️ Quick Start
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd reclaim-route-mobile
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. **Access the application**
+   - Open http://localhost:8080 in your browser
+   - Choose between Customer App or Partner App
+
+## 📲 Mobile Deployment
+
+### Web Preview
+The app is mobile-optimized and works perfectly in browser mobile view.
+
+### Native Mobile Apps
+
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
+
+2. **Add mobile platforms**
+   ```bash
+   npx cap add ios
+   npx cap add android
+   ```
+
+3. **Sync with native platforms**
+   ```bash
+   npx cap sync
+   ```
+
+4. **Run on device/emulator**
+   ```bash
+   # For Android
+   npx cap run android
+   
+   # For iOS (macOS with Xcode required)
+   npx cap run ios
+   ```
+
+## 🧪 Testing Credentials
+
+**Mock OTP for all users**: `123456`
+
+### Test Flow
+1. Choose Customer or Partner app
+2. Enter any phone number
+3. Use OTP: 123456
+4. Explore the features!
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── auth/
+│   │   └── LoginForm.tsx
+│   ├── customer/
+│   │   ├── CustomerDashboard.tsx
+│   │   ├── OrderHistory.tsx
+│   │   └── SchedulePickup.tsx
+│   ├── partner/
+│   │   ├── ManagePickup.tsx
+│   │   └── PartnerDashboard.tsx
+│   ├── ui/                 # shadcn/ui components
+│   └── AppSelector.tsx
+├── contexts/
+│   ├── AuthContext.tsx     # Authentication state
+│   └── PickupContext.tsx   # Pickup requests state
+├── types/
+│   └── pickup.ts           # TypeScript interfaces
+└── App.tsx
 ```
 
-**Edit a file directly in GitHub**
+## 🎨 Design System
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Uses semantic color tokens from Tailwind config
+- Mobile-first responsive design
+- Consistent spacing and typography
+- Accessibility-focused components
 
-**Use GitHub Codespaces**
+## 🔧 Backend Simulation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The app uses local state management and localStorage to simulate backend functionality:
+- User authentication state
+- Pickup requests storage
+- Real-time updates between Customer and Partner views
 
-## What technologies are used for this project?
+## 🚀 Deployment Options
 
-This project is built with:
+1. **Vercel/Netlify**: Deploy the `dist` folder
+2. **Mobile App Stores**: Use Capacitor build process
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🤝 Contributing
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/99904fca-87c9-44d0-9aab-f8dea8a0c066) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
